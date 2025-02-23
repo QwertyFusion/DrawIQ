@@ -236,7 +236,8 @@ function App() {
             const canvas = canvasRef.current;
             const imageData = canvas.toDataURL("image/png");
 
-            const response = await fetch("http://localhost:3000/analyze", {
+            const PORT = process.env.PORT || 3000;
+            const response = await fetch(`http://localhost:${PORT}/analyze`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
