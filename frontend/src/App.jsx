@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { HexColorPicker } from "react-colorful";
+import parse from "html-react-parser";
 import {
     Pencil,
     Eraser,
@@ -543,7 +544,7 @@ function App() {
                             </button>
                         </div>
                         <div className="text-gray-200 whitespace-pre-wrap">
-                            {result}
+                            {parse(result)}
                         </div>
                         <button
                             onClick={() => setShowModal(false)}
