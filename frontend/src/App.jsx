@@ -249,7 +249,8 @@ function App() {
             }
 
             const data = await response.json();
-            setResult(data.result);
+            const parsedResult = parse(data.result);
+            setResult(parsedResult);
             setShowModal(true);
         } catch (error) {
             console.error("Error:", error);
@@ -530,7 +531,7 @@ function App() {
             />
 
             {showModal && (
-                <div className="fixed inset-0 backdrop-blur-sm bg-black/30 flex items-center justify-center p-4 z-50">
+                <div className="fixed inset-0 backdrop-blur-xs bg-black/30 flex items-center justify-center p-4 z-50">
                     <div className="bg-gray-800/90 rounded-lg p-6 max-w-lg w-full shadow-xl border border-gray-700">
                         <div className="flex justify-between items-center mb-4">
                             <h2 className="text-xl font-semibold text-white">
@@ -544,7 +545,7 @@ function App() {
                             </button>
                         </div>
                         <div className="text-gray-200 whitespace-pre-wrap">
-                            {parse(result)}
+                            {result}
                         </div>
                         <button
                             onClick={() => setShowModal(false)}
