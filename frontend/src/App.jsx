@@ -372,7 +372,7 @@ function App() {
                     <img
                         src="/drawiq-logo.svg"
                         alt="DrawIQ"
-                        className="w-8 h-8"
+                        className="w-10 h-10"
                     />
                     <span className="text-white font-semibold">DrawIQ</span>
                 </div>
