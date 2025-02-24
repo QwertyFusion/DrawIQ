@@ -236,7 +236,15 @@ function App() {
             const canvas = canvasRef.current;
             const imageData = canvas.toDataURL("image/png");
 
-            const response = await fetch(`/analyze`, {
+            // mode = "DEVELOPMENT" if running in Development mode, otherwise "PRODUCTION"
+            const mode = "PRODUCTION";
+
+            const api_link =
+                mode === "DEVELOPMENT"
+                    ? "http://localhost:3000/analyze"
+                    : "/analyze";
+
+            const response = await fetch(`${api_link}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -519,6 +527,25 @@ function App() {
                         <span>{isLoading ? "Processing..." : "Run"}</span>
                     </button>
                 </div>
+            </div>
+
+            <div className="absolute bottom-5 left-5 py-2 px-4 bg-gray-800 rounded-lg shadow-lg border border-gray-700">
+                <a
+                    href="https://github.com/QwertyFusion"
+                    target="_blank"
+                    className="text-white font-bold hover:text-blue-400"
+                    title="Creator is QwertyFusion"
+                >
+                    QwertyFusion
+                </a>
+                <a
+                    href="https://github.com/QwertyFusion/DrawIQ"
+                    target="_blank"
+                    className="text-white font-bold hover:text-blue-400"
+                    title="Link to Project Repository"
+                >
+                    /DrawIQ
+                </a>
             </div>
 
             <canvas

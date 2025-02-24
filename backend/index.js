@@ -15,7 +15,15 @@ dotenv.config();
 const PORT = process.env.PORT || 3000;
 const __dirname = path.resolve();
 const app = express();
-app.use(cors());
+
+// CORS options to allow only one specific origin
+const corsOptions = {
+    origin: process.env.FRONTEND_URL, // Replace with your allowed website
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Specify allowed methods
+    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+};
+
+app.use(cors(corsOptions));
 app.use(express.json({ limit: "50mb" })); // Adjust size as needed
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
